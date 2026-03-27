@@ -5,5 +5,5 @@ app_name = 'polls'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # We'll add detail, results, vote later
+    path('<int:question_id>/', views.detail, name='detail'),   # ← Add this line
 ]

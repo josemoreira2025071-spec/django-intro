@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ question.question_text }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+    </style>
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    <p>Published on: {{ question.pub_date|date:"Y-m-d H:i" }}</p>
+
+    <h3>Choices:</h3>
+    {% if question.choice_set.all %}
+        <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }} — {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No choices yet.</p>
+    {% endif %}
+
+    <p><a href="/polls/">← Back to all polls</a></p>
+</body>
+</html>
